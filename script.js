@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         lines.forEach((rawLine, index) => {
             // 1. Clean the line
             // - Strip leading number (e.g., "1. ")
-            // - Remove invisible Unicode characters (like from WhatsApp)
+            // - **FIX: Remove a wider range of invisible Unicode characters**
             // - Trim whitespace
             let cleanedLine = rawLine
                 .replace(/^\s*\d+\.\s*/, '')
-                .replace(/[\u200B-\u200D\uFEFF\u200E]/g, '') 
+                .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') 
                 .trim();
 
             if (cleanedLine === '') {
